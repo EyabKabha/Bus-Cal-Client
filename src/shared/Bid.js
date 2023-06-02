@@ -348,7 +348,7 @@ class Bid extends React.Component {
 
             <div>
                 <Navbar />
-            
+                {console.log(this.state.validityState.start_date)}
                 <div className="container mt-3" >
                     {this.state.updatePopup &&
                         <AddDepModal
@@ -362,7 +362,7 @@ class Bid extends React.Component {
                         <div className="col-md-1"></div>
                         <div className="col-md-5">
                             <label htmlFor="inputFromDate" className="d-flex align-items-right">מתאריך</label>
-                            <input type="date" className={'form-control mb-2'} date id="inputFromDate" name="start_date" min={this.state.currentDate} max="9999-12-31" value={this.state.dataOrderState.start_date} onChange={this.onChangeHandler} onBlur={() => this.onBlur('start_date', this.state.dataOrderState.start_date)} />
+                            <input type="date" className={this.state.validityState.start_date || 'form-control mb-2'} date id="inputFromDate" name="start_date" min={this.state.currentDate} max="9999-12-31" value={this.state.dataOrderState.start_date} onChange={this.onChangeHandler} onBlur={() => this.onBlur('start_date', this.state.dataOrderState.start_date)} />
                             <label className="float-right text-danger">{this.state.formMessages.start_date}</label>
                         </div>
 
