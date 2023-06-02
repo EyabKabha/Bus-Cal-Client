@@ -826,604 +826,615 @@ class SignUpDetails extends React.Component {
     addModalClosed = () => {
         this.setState({ showEmailValidate: false })
     }
+    
     render() {
         // let addModalClosed = () => this.setState({ showEmailValidate: faBatteryThreeQuarters ,changeEmailValidate:false})
         const { cities } = this.context;
         return (
-            <div id="details">
-                <div className="container-fluid">
-                    {this.state.updatePopup && <AddDepModal show={this.state.addModalShow}
-                        onHide={() => false}
-                        msg={this.state.message}
-                        updatePopup={this.state.updatePopup}
-                        backSupportFromInfo={this.state.backSupportFromInfo}
-                        backCustomerAdmin={this.state.backCustomerAdmin}
-                        editInfoShow={this.state.editInfoShow} />}
+            <div id="card-body">
+                <div class="">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10">
+                            <div class="card">
+                                <div class="card-body py-md-4">
+                                    <div className="">
+                                        {this.state.updatePopup && <AddDepModal show={this.state.addModalShow}
+                                            onHide={() => false}
+                                            msg={this.state.message}
+                                            updatePopup={this.state.updatePopup}
+                                            backSupportFromInfo={this.state.backSupportFromInfo}
+                                            backCustomerAdmin={this.state.backCustomerAdmin}
+                                            editInfoShow={this.state.editInfoShow} />}
 
-                    <div className="row">
-                        <div className="col-md-3"></div>
-                        <div className="col-md-8">
-                            <div className="form-group row">
-                                <div className="col-md-4">
-                                    <div className="input-group"></div>
-                                    {this.state.dataUpdate ? <h4 className="text-right mt-2">ערכית נתונים אישיים</h4> : null}
-                                    <h5 className="d-flex align-items-right mt-3 text-primary"><u>פרטים אישיים</u></h5>
-
-
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <div className="form-group row">
-                                    <label htmlFor="inputFirstName" className="d-flex align-items-right col-sm-3 col-form-label">שם פרטי</label>
-                                    <div className="col-sm-10">
-                                        <input type="text" className={this.state.validityState.first_name || "form-control"} id="inputFirstName" name="first_name" value={this.state.signUpData.first_name || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('first_name', this.state.signUpData.first_name)} />
-                                        <label className="float-right text-danger">{this.state.formMessages.first_name}</label>
-                                    </div>
-                                </div>
-                                <div className="form-group row">
-                                    <label htmlFor="inputLastName" className="d-flex align-items-right col-sm-3 col-form-label">שם משפחה</label>
-                                    <div className="col-sm-10">
-                                        <input type="text" className={this.state.validityState.last_name || "form-control"} id="inputLastName" name="last_name" value={this.state.signUpData.last_name || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('last_name', this.state.signUpData.last_name)} />
-                                        <label className="float-right text-danger">{this.state.formMessages.last_name}</label>
-
-                                    </div>
-                                </div>
-                                <div className="form-group row">
-                                    <label htmlFor="inputPhone2" className="d-flex align-items-right col-sm-3 col-form-label"> נייד</label>
-                                    <div className="col-sm-10">
-                                        <input type="text" className={this.state.validityState.phone || "form-control"} id="inputPhone2" name="phone" value={this.state.signUpData.phone || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('phone', this.state.signUpData.phone)} />
-                                        <label className="float-right text-danger">{this.state.formMessages.phone}</label>
-
-                                    </div>
-                                </div>
-                                <div className="form-group row">
-                                    <label htmlFor="inputPhoneFax" className="d-flex align-items-right col-sm-3 col-form-label"> פקס</label>
-                                    <div className="col-sm-10">
-                                        <input type="text" className={this.state.validityState.fax || "form-control"} id="inputPhoneFax" name="fax" value={this.state.signUpData.fax || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('fax', this.state.signUpData.fax)} />
-                                        <label className="float-right text-danger">{this.state.formMessages.fax}</label>
-                                    </div>
-
-                                </div>
-                                <div className="form-group row">
-                                    <label htmlFor="inputEmail" className="d-flex align-items-right col-sm-3 col-form-label">דוא"ל</label>
-                                    <div className="col-sm-10">
-                                        <input type="text" className={this.state.validityState.email || "form-control"} id="inputEmail" name="email" value={this.state.signUpData.email || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('email', this.state.signUpData.email)} />
-                                        <label className="float-right text-danger">{this.state.formMessages.email}</label>
-
-                                    </div>
-                                </div>
-                                {!this.state.dataUpdate && !this.state.checkIfChangeSub ?
-                                    <div>
-                                        <div className="form-group row">
-                                            <label htmlFor="inputPassOne" className="d-flex align-items-right col-sm-3 col-form-label">סיסמה</label>
-                                            <div className="col-sm-10">
-                                                <input type="password" className={this.state.validityState.password || "form-control"} id="inputPassOne" name="password" value={this.state.signUpData.password || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('password', this.state.signUpData.password)} />
-                                                <label className="text-right float-right text-danger">{this.state.formMessages.password}</label>
-
-                                            </div>
-                                        </div>
-                                        <div className="form-group row">
-                                            <label htmlFor="inputPassTwo" className="d-flex align-items-right col-sm-3 col-form-label">אשר סיסמה</label>
-                                            <div className="col-sm-10">
-                                                <input type="password" name="confirmPassword" className={this.state.validityState.confirmPassword || "form-control"} id="inputPassTwo" onChange={this.onChangeHandler} onBlur={() => this.onBlur('confirmPassword', this.state.signUpData.confirmPassword)} />
-                                                <label className="float-right text-danger">{this.state.formMessages.confirmPassword}</label>
-
-                                            </div>
-                                        </div>
-                                    </div> : null
-
-                                }
-                                < div className="form-group row">
-                                    <div className="col-md-4 col-sm-10">
-                                        <label htmlFor="inputCity" className="d-flex align-items-right mt-3">יישוב</label>
-
-                                        <Autocomplete
-                                            id="combo-box-demo"
-                                            options={cities}
-                                            getOptionLabel={(option) => option.name}
-                                            onChange={((evt, city) => {
-                                                if (city) {
-                                                    let { signUpData } = this.state
-                                                    signUpData.city = city.name
-
-                                                    const { cities } = this.context
-                                                    const selectedCity = cities.find(city => city && city.name === signUpData.city)
-
-                                                    this.setState({ signUpData, selectedCity })
-                                                }
-                                            })}
-                                            noOptionsText={'ישוב לא קיים'}
-                                            style={{ direction: 'rtl' }}
-                                            disableClearable={true}
-                                            wrapperStyle={{ position: 'relative', display: 'inline-block', color: 'red' }}
-                                            defaultValue={this.state.selectedCity}
-                                            value={this.state.selectedCity || ''}
-                                            className={this.state.validityState.city || "form-control"}
-                                            onBlur={() => this.onBlur('city', this.state.signUpData.city)}
-                                            renderInput={(params) => <TextField {...params} placeholder="מוצא" size='small' InputProps={{ ...params.InputProps, disableUnderline: true }} />}
-                                        />
-                                        <label className="float-right text-danger">{this.state.formMessages.city}</label>
-
-                                    </div>
-
-                                    <div className="col-md-4 col-sm-10">
-                                        <label htmlFor="inputStreet" className="d-flex align-items-right mt-3">רחוב</label>
-                                        <input type="text" className={this.state.validityState.street || "form-control"} id="inputStreet" placeholder="רחוב" name="street" value={this.state.signUpData.street || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('street', this.state.signUpData.street)} />
-                                        <label className="float-right text-danger">{this.state.formMessages.street}</label>
-
-                                    </div>
-                                    <div className="col-md-2  col-sm-10">
-                                        <label htmlFor="inputZip" className="d-flex align-items-right mt-3">מיקוד</label>
-                                        <input id="inputZip" size='small' className={this.state.validityState.postal_code || "form-control"} name="postal_code" placeholder="מיקוד" value={this.state.signUpData.postal_code || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('postal_code', this.state.signUpData.postal_code)} />
-                                        <label className="float-right text-danger">{this.state.formMessages.postal_code}</label>
-                                    </div>
-                                </div>
-                                {this.state.signUpData.type === 'עובד חברה' ? null :
-
-                                    <div className="form-group row">
-                                        <div className="col-md-4  col-sm-10">
-                                            <label htmlFor="inputCustomer" className="d-flex align-items-right mt-3">סוג לקוח</label>
-                                            <select className={this.state.validityState.type || "form-control"} id="inputCustomer" name="type" value={this.state.signUpData.type || ''} onChange={this.state.dataUpdate ? this.handleKeyPress : this.onChangeHandler} onClick={this.isCompanyOrNo} disabled={this.state.dataUpdate === true} onBlur={() => this.onBlur('type', this.state.signUpData.type)}>
-                                                <option selected value="">סוג לקוח</option>
-                                                <option value="חברה">חברה</option>
-                                                <option value="לקוח רגיל">לקוח רגיל</option>
-                                                <option value="רשות">רשות</option>
-                                                <option value="מוסד חינוכי">מוסד חינוכי</option>
-
-                                            </select>
-                                            <div>
-                                                <label className="float-right text-danger">{this.state.formMessages.type}</label>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                                        <div className="row">
+                                            <div className="col-md-2"></div>
+                                            <div className="col-md-8">
+                                                <div className="form-group row">
+                                                    <div className="col-md-4">
+                                                        <div className="input-group"></div>
+                                                        {this.state.dataUpdate ? <h4 className="text-right mt-2">ערכית נתונים אישיים</h4> : null}
+                                                        <h5 className="d-flex align-items-right mt-3 text-primary"><u>פרטים אישיים</u></h5>
 
 
-                                }
+                                                    </div>
+                                                </div>
+                                                <div className="form-group">
+                                                    <div className="form-group row">
+                                                        <label htmlFor="inputFirstName" className="d-flex align-items-right col-sm-3 col-form-label font-weight-bold">שם פרטי</label>
+                                                        <div className="col-sm-12">
+                                                            <input type="text" className={this.state.validityState.first_name || "form-control"} id="inputFirstName" name="first_name" value={this.state.signUpData.first_name || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('first_name', this.state.signUpData.first_name)} />
+                                                            <label className="float-right text-danger">{this.state.formMessages.first_name}</label>
+                                                        </div>
+                                                    </div>
+                                                    <div className="form-group row">
+                                                        <label htmlFor="inputLastName" className="d-flex align-items-right col-sm-3 col-form-label font-weight-bold">שם משפחה</label>
+                                                        <div className="col-sm-12">
+                                                            <input type="text" className={this.state.validityState.last_name || "form-control"} id="inputLastName" name="last_name" value={this.state.signUpData.last_name || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('last_name', this.state.signUpData.last_name)} />
+                                                            <label className="float-right text-danger">{this.state.formMessages.last_name}</label>
 
-                                {(this.state.isCompany || this.state.signUpData.type === 'חברה') ?
+                                                        </div>
+                                                    </div>
+                                                    <div className="form-group row">
+                                                        <label htmlFor="inputPhone2" className="d-flex align-items-right col-sm-3 col-form-label font-weight-bold"> נייד</label>
+                                                        <div className="col-sm-12">
+                                                            <input type="text" className={this.state.validityState.phone || "form-control"} id="inputPhone2" name="phone" value={this.state.signUpData.phone || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('phone', this.state.signUpData.phone)} />
+                                                            <label className="float-right text-danger">{this.state.formMessages.phone}</label>
 
-                                    <div>
-                                        <div className="form-group row">
-                                            <div className="col-md-4">
-                                                <h5 className="d-flex align-items-right mt-3 text-primary"><u>פרטי החברה</u></h5>
-                                            </div>
-                                        </div>
-                                        <div className="form-group row">
-                                            <label className="d-flex align-items-right col-sm-3 col-form-label">סוג לקוח </label>
-                                        </div>
-                                        <div className="form-group row">
-                                            <div className="form-check form-check-inline">
-                                                <input className="form-check-input ml-2" type="radio" id="company" value='חברה בע"מ' name="companytype" checked={this.state.showLabelCompany} onChange={this.onChangeHandler} onClick={this.state.dataUpdate ? this.handleKeyPress : this.isExistsOrVipOrNotification} />
-                                                <label className="form-check-label" htmlFor="company">חברה בע"מ</label>
-                                            </div>
-                                            <div className="form-check form-check-inline">
-                                                <input className="form-check-input ml-2" type="radio" id="Oseek" value='עוסק מורשה' name="companytype" onChange={this.onChangeHandler} onClick={this.state.dataUpdate ? this.handleKeyPress : this.isExistsOrVipOrNotification} />
-                                                <label className="form-check-label" htmlFor="Oseek">עוסק מורשה</label>
-                                            </div>
-                                        </div>
-                                        <div className="form-group row">
-                                            {this.state.showLabelCompany ? <label htmlFor="inputCompany" className="d-flex align-items-right col-sm-12 col-form-label">שם חברה</label> :
-                                                <label htmlFor="inputCompany" className="d-flex align-items-right col-sm-12 col-form-label">שם עסק</label>}
+                                                        </div>
+                                                    </div>
+                                                    <div className="form-group row">
+                                                        <label htmlFor="inputPhoneFax" className="d-flex align-items-right col-sm-3 col-form-label font-weight-bold"> פקס</label>
+                                                        <div className="col-sm-12">
+                                                            <input type="text" className={this.state.validityState.fax || "form-control"} id="inputPhoneFax" name="fax" value={this.state.signUpData.fax || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('fax', this.state.signUpData.fax)} />
+                                                            <label className="float-right text-danger">{this.state.formMessages.fax}</label>
+                                                        </div>
 
-                                            <div className="col-sm-10">
-                                                <input type="text" className={this.state.validityState.companyname || "form-control"} id="inputCompany" name="companyname" value={this.state.signUpData.companyname || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('companyname', this.state.signUpData.companyname)} />
-                                                <label className="float-right text-danger">{this.state.formMessages.companyname}</label>
-                                            </div>
-                                        </div>
-                                        <div className="form-group row">
-                                            {!this.state.doesPhoneChanged ?
-                                                <label htmlFor="inputPhone" className="d-flex align-items-right col-sm-12 col-form-label"> נייד </label>
-                                                : <label htmlFor="inputPhone" className="d-flex align-items-right col-sm-12 col-form-label"> נייד ( * לחץ על <b>&nbsp;שלח קוד&nbsp;</b> לקבלת קוד אימות לטלפון  )</label>
-                                            }
-                                            <div className={this.state.doesPhoneChanged ? "col-sm-8" : "col-sm-10"}>
-                                                <input type="text" className={this.state.validityState.companyphone || "form-control"} id="inputPhone" name="companyphone" value={this.state.signUpData.companyphone || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('companyphone', this.state.signUpData.companyphone)} />
-                                                <label className="float-right text-danger">{this.state.formMessages.companyphone}</label>
-                                            </div>
-                                            <div className="col-md-2 col-sm-4">
-                                                {this.state.doesPhoneChanged ?
-                                                    <button className="btn btn-warning btn-block" type="button" onClick={this.onClickValidatePhone} disabled={!this.state.isValidPhoneNumber === true}>שלח קוד</button>
-                                                    : null
-                                                }
+                                                    </div>
+                                                    <div className="form-group row">
+                                                        <label htmlFor="inputEmail" className="d-flex align-items-right col-sm-3 col-form-label font-weight-bold">דוא"ל</label>
+                                                        <div className="col-sm-12">
+                                                            <input type="text" className={this.state.validityState.email || "form-control"} id="inputEmail" name="email" value={this.state.signUpData.email || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('email', this.state.signUpData.email)} />
+                                                            <label className="float-right text-danger">{this.state.formMessages.email}</label>
 
-                                            </div>
-                                        </div>
-                                        {/* <div class="form-group row">
+                                                        </div>
+                                                    </div>
+                                                    {!this.state.dataUpdate && !this.state.checkIfChangeSub ?
+                                                        <div>
+                                                            <div className="form-group row">
+                                                                <label htmlFor="inputPassOne" className="d-flex align-items-right col-sm-3 col-form-label font-weight-bold">סיסמה</label>
+                                                                <div className="col-sm-12">
+                                                                    <input type="password" className={this.state.validityState.password || "form-control"} id="inputPassOne" name="password" value={this.state.signUpData.password || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('password', this.state.signUpData.password)} />
+                                                                    <label className="text-right float-right text-danger">{this.state.formMessages.password}</label>
+
+                                                                </div>
+                                                            </div>
+                                                            <div className="form-group row">
+                                                                <label htmlFor="inputPassTwo" className="d-flex align-items-right col-sm-3 col-form-label font-weight-bold">אשר סיסמה</label>
+                                                                <div className="col-sm-12">
+                                                                    <input type="password" name="confirmPassword" className={this.state.validityState.confirmPassword || "form-control"} id="inputPassTwo" onChange={this.onChangeHandler} onBlur={() => this.onBlur('confirmPassword', this.state.signUpData.confirmPassword)} />
+                                                                    <label className="float-right text-danger">{this.state.formMessages.confirmPassword}</label>
+
+                                                                </div>
+                                                            </div>
+                                                        </div> : null
+
+                                                    }
+                                                    < div className="form-group row">
+                                                        <div className="col-md-4 col-sm-12">
+                                                            <label htmlFor="inputCity" className="d-flex align-items-right mt-3 font-weight-bold">יישוב</label>
+
+                                                            <Autocomplete
+                                                                id="combo-box-demo"
+                                                                options={cities}
+                                                                getOptionLabel={(option) => option.name}
+                                                                onChange={((evt, city) => {
+                                                                    if (city) {
+                                                                        let { signUpData } = this.state
+                                                                        signUpData.city = city.name
+
+                                                                        const { cities } = this.context
+                                                                        const selectedCity = cities.find(city => city && city.name === signUpData.city)
+
+                                                                        this.setState({ signUpData, selectedCity })
+                                                                    }
+                                                                })}
+                                                                noOptionsText={'ישוב לא קיים'}
+                                                                style={{ direction: 'rtl' }}
+                                                                disableClearable={true}
+                                                                wrapperStyle={{ position: 'relative', display: 'inline-block', color: 'red' }}
+                                                                defaultValue={this.state.selectedCity}
+                                                                value={this.state.selectedCity || ''}
+                                                                className={this.state.validityState.city || "form-control"}
+                                                                onBlur={() => this.onBlur('city', this.state.signUpData.city)}
+                                                                renderInput={(params) => <TextField {...params} placeholder="מוצא" size='small' InputProps={{ ...params.InputProps, disableUnderline: true }} />}
+                                                            />
+                                                            <label className="float-right text-danger">{this.state.formMessages.city}</label>
+
+                                                        </div>
+
+                                                        <div className="col-md-4 col-sm-12">
+                                                            <label htmlFor="inputStreet" className="d-flex align-items-right mt-3 font-weight-bold">רחוב</label>
+                                                            <input type="text" className={this.state.validityState.street || "form-control"} id="inputStreet" placeholder="רחוב" name="street" value={this.state.signUpData.street || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('street', this.state.signUpData.street)} />
+                                                            <label className="float-right text-danger">{this.state.formMessages.street}</label>
+
+                                                        </div>
+                                                        <div className="col-md-2  col-sm-12">
+                                                            <label htmlFor="inputZip" className="d-flex align-items-right mt-3 font-weight-bold">מיקוד</label>
+                                                            <input id="inputZip" size='small' className={this.state.validityState.postal_code || "form-control"} name="postal_code" placeholder="מיקוד" value={this.state.signUpData.postal_code || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('postal_code', this.state.signUpData.postal_code)} />
+                                                            <label className="float-right text-danger">{this.state.formMessages.postal_code}</label>
+                                                        </div>
+                                                    </div>
+                                                    {this.state.signUpData.type === 'עובד חברה' ? null :
+
+                                                        <div className="form-group row">
+                                                            <div className="col-md-4  col-sm-12">
+                                                                <label htmlFor="inputCustomer" className="d-flex align-items-right mt-3 font-weight-bold">סוג לקוח</label>
+                                                                <select className={this.state.validityState.type || "form-control"} id="inputCustomer" name="type" value={this.state.signUpData.type || ''} onChange={this.state.dataUpdate ? this.handleKeyPress : this.onChangeHandler} onClick={this.isCompanyOrNo} disabled={this.state.dataUpdate === true} onBlur={() => this.onBlur('type', this.state.signUpData.type)}>
+                                                                    <option selected value="">סוג לקוח</option>
+                                                                    <option value="חברה">חברה</option>
+                                                                    <option value="לקוח רגיל">לקוח רגיל</option>
+                                                                    <option value="רשות">רשות</option>
+                                                                    <option value="מוסד חינוכי">מוסד חינוכי</option>
+
+                                                                </select>
+                                                                <div>
+                                                                    <label className="float-right text-danger">{this.state.formMessages.type}</label>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                    }
+
+                                                    {(this.state.isCompany || this.state.signUpData.type === 'חברה') ?
+
+                                                        <div>
+                                                            <div className="form-group row">
+                                                                <div className="col-md-4">
+                                                                    <h5 className="d-flex align-items-right mt-3 text-primary"><u>פרטי החברה</u></h5>
+                                                                </div>
+                                                            </div>
+                                                            <div className="form-group row">
+                                                                <label className="d-flex align-items-right col-sm-3 col-form-label">סוג לקוח </label>
+                                                            </div>
+                                                            <div className="form-group row">
+                                                                <div className="form-check form-check-inline">
+                                                                    <input className="form-check-input ml-2" type="radio" id="company" value='חברה בע"מ' name="companytype" checked={this.state.showLabelCompany} onChange={this.onChangeHandler} onClick={this.state.dataUpdate ? this.handleKeyPress : this.isExistsOrVipOrNotification} />
+                                                                    <label className="form-check-label" htmlFor="company">חברה בע"מ</label>
+                                                                </div>
+                                                                <div className="form-check form-check-inline">
+                                                                    <input className="form-check-input ml-2" type="radio" id="Oseek" value='עוסק מורשה' name="companytype" onChange={this.onChangeHandler} onClick={this.state.dataUpdate ? this.handleKeyPress : this.isExistsOrVipOrNotification} />
+                                                                    <label className="form-check-label" htmlFor="Oseek">עוסק מורשה</label>
+                                                                </div>
+                                                            </div>
+                                                            <div className="form-group row">
+                                                                {this.state.showLabelCompany ? <label htmlFor="inputCompany" className="d-flex align-items-right col-sm-12 col-form-label">שם חברה</label> :
+                                                                    <label htmlFor="inputCompany" className="d-flex align-items-right col-sm-12 col-form-label">שם עסק</label>}
+
+                                                                <div className="col-sm-12">
+                                                                    <input type="text" className={this.state.validityState.companyname || "form-control"} id="inputCompany" name="companyname" value={this.state.signUpData.companyname || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('companyname', this.state.signUpData.companyname)} />
+                                                                    <label className="float-right text-danger">{this.state.formMessages.companyname}</label>
+                                                                </div>
+                                                            </div>
+                                                            <div className="form-group row">
+                                                                {!this.state.doesPhoneChanged ?
+                                                                    <label htmlFor="inputPhone" className="d-flex align-items-right col-sm-12 col-form-label"> נייד </label>
+                                                                    : <label htmlFor="inputPhone" className="d-flex align-items-right col-sm-12 col-form-label"> נייד ( * לחץ על <b>&nbsp;שלח קוד&nbsp;</b> לקבלת קוד אימות לטלפון  )</label>
+                                                                }
+                                                                <div className={this.state.doesPhoneChanged ? "col-sm-8" : "col-sm-12"}>
+                                                                    <input type="text" className={this.state.validityState.companyphone || "form-control"} id="inputPhone" name="companyphone" value={this.state.signUpData.companyphone || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('companyphone', this.state.signUpData.companyphone)} />
+                                                                    <label className="float-right text-danger">{this.state.formMessages.companyphone}</label>
+                                                                </div>
+                                                                <div className="col-md-2 col-sm-4">
+                                                                    {this.state.doesPhoneChanged ?
+                                                                        <button className="btn btn-warning btn-block" type="button" onClick={this.onClickValidatePhone} disabled={!this.state.isValidPhoneNumber === true}>שלח קוד</button>
+                                                                        : null
+                                                                    }
+
+                                                                </div>
+                                                            </div>
+                                                            {/* <div class="form-group row">
 
                                             <label htmlFor="inputPhone2Company" className="d-flex align-items-right col-form-label">* לחץ על שלח קוד לקבלת קוד אימות לטלפון</label>
                                         </div> */}
-                                        <div className="row">
-                                            {/* <div className="col-md-1"></div> */}
-                                            <div className="col-md-4">
-                                                {this.state.inputCodeForPhone ?
-                                                    <div class="form-inline">
-                                                        <input type="text" className={this.state.validityState.validateCodePhone || 'form-control '} placeholder="קוד אימות" name="validateCodePhone" value={this.state.signUpData.validateCodePhone || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('validateCodePhone', this.state.signUpData.validateCodePhone)} />
-                                                        {/* <div className="ml-3"></div> */}
-                                                        {/* <div class="input-group-append">
+                                                            <div className="row">
+                                                                {/* <div className="col-md-1"></div> */}
+                                                                <div className="col-md-4">
+                                                                    {this.state.inputCodeForPhone ?
+                                                                        <div class="form-inline">
+                                                                            <input type="text" className={this.state.validityState.validateCodePhone || 'form-control '} placeholder="קוד אימות" name="validateCodePhone" value={this.state.signUpData.validateCodePhone || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('validateCodePhone', this.state.signUpData.validateCodePhone)} />
+                                                                            {/* <div className="ml-3"></div> */}
+                                                                            {/* <div class="input-group-append">
                                                         <button className="btn btn-secondary" type="button" onClick={this.onClickStation}>שלח קוד</button>
                                                     </div> */}
-                                                    </div> : null}
+                                                                        </div> : null}
 
-                                                <label className="float-right text-danger">{this.state.formMessages.validateCodePhone}</label>
-                                            </div>
-                                        </div>
-
-                                        <div className="form-group row">
-                                            <label htmlFor="inputPhone2Company" className="d-flex align-items-right col-sm-3 col-form-label">טלפון</label>
-                                            <div className="col-sm-10">
-                                                <input type="text" className={this.state.validityState.company_t_phone || "form-control"} id="inputPhone2Company" name="company_t_phone" value={this.state.signUpData.company_t_phone || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('company_t_phone', this.state.signUpData.company_t_phone)} />
-                                                <label className="float-right text-danger">{this.state.formMessages.company_t_phone}</label>
-                                            </div>
-                                        </div>
-                                        <div className="form-group row">
-                                            <label htmlFor="inputEmail2" className="d-flex align-items-right col-sm-3 col-form-label">דוא"ל</label>
-                                            <div className="col-sm-10">
-                                                <input type="text" className={this.state.validityState.companyemail || "form-control"} id="inputEmail2" name="companyemail" value={this.state.signUpData.companyemail || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('companyemail', this.state.signUpData.companyemail)} />
-                                                <label className="float-right text-danger">{this.state.formMessages.companyemail}</label>
-                                            </div>
-                                        </div>
-                                        <div className="form-group row">
-                                            <label htmlFor="inputPhoneFaxCompany" className="d-flex align-items-right col-sm-3 col-form-label"> פקס</label>
-                                            <div className="col-sm-10">
-                                                <input type="text" className={this.state.validityState.companyfax || "form-control"} id="inputPhoneFaxCompany" name="companyfax" value={this.state.signUpData.companyfax || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('companyfax', this.state.signUpData.companyfax)} />
-                                                <label className="float-right text-danger">{this.state.formMessages.companyfax}</label>
-                                            </div>
-                                        </div>
-
-                                        <div className="form-group row">
-                                            {this.state.showLabelCompany ? <label htmlFor="inputOseek" className="d-flex align-items-right col-sm-12 col-form-label">ח.פ</label> :
-                                                <label htmlFor="inputOseek" className="d-flex align-items-right col-sm-12 col-form-label">עוסק מורשה</label>}
-
-
-                                            <div className="col-sm-10">
-                                                <input type="text" className={this.state.validityState.code || "form-control"} id="inputOseek" name="code" value={this.state.signUpData.code || ''} onKeyPress={this.state.dataUpdate ? this.handleKeyPress : null} onChange={this.onChangeHandler} onBlur={() => this.onBlur('code', this.state.signUpData.code)} disabled={this.state.dataUpdate === true} />
-                                                <label className="float-right text-danger">{this.state.formMessages.code}</label>
-                                            </div>
-                                        </div>
-
-                                        <div className="form-group row">
-                                            <div className="col-md-4  col-sm-10">
-                                                <label htmlFor="comapnyCity" className="d-flex align-items-right mt-3">עיר</label>
-                                                <Autocomplete
-
-                                                    id="comapnyCity"
-                                                    className={this.state.validityState.companycity || "form-control"}
-                                                    onBlur={() => this.onBlur('companycity', this.state.signUpData.companycity)}
-                                                    options={cities}
-                                                    getOptionLabel={(option) => option.name}
-                                                    onChange={((evt, city) => {
-                                                        if (city) {
-                                                            let { signUpData } = this.state
-                                                            signUpData.companycity = city.name
-
-                                                            const { cities } = this.context
-                                                            const selectedCityCompany = cities.find(city => city && city.name === signUpData.companycity)
-
-                                                            this.setState({ signUpData, selectedCityCompany })
-                                                        }
-                                                    })}
-                                                    defaultValue={this.state.selectedCityCompany}
-                                                    value={this.state.selectedCityCompany || ''}
-                                                    disableClearable={true}
-                                                    wrapperStyle={{ position: 'relative', display: 'inline-block', color: 'red' }}
-                                                    style={{ direction: 'rtl' }}
-                                                    noOptionsText={'ישוב לא קיים'}
-                                                    renderInput={(params) => <TextField {...params} placeholder="יישוב" size="small" id="comapnyCity" InputProps={{ ...params.InputProps, disableUnderline: true }} />}
-                                                />
-                                                <label className="float-right text-danger">{this.state.formMessages.companycity}</label>
-                                            </div>
-
-                                            <div className="col-md-4  col-sm-10">
-                                                <label htmlFor="inputStreetCompany" className="d-flex align-items-right mt-3">רחוב</label>
-                                                <input type="text" className={this.state.validityState.companystreet || "form-control"} id="inputStreetCompany" placeholder="רחוב" name="companystreet" value={this.state.signUpData.companystreet || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('companystreet', this.state.signUpData.companystreet)} />
-                                                <label className="float-right text-danger">{this.state.formMessages.companystreet}</label>
-                                            </div>
-                                            <div className="col-md-2 col-sm-10">
-                                                <label htmlFor="inputZipCompany" className="d-flex align-items-right mt-3" >מיקוד</label>
-                                                <input type="text" className={this.state.validityState.company_postal_code || "form-control"} id="inputZipCompany" placeholder="3007500" name="company_postal_code" value={this.state.signUpData.company_postal_code || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('company_postal_code', this.state.signUpData.company_postal_code)} />
-                                                <label className="float-right text-danger">{this.state.formMessages.company_postal_code}</label>
-                                            </div>
-                                        </div>
-                                    </div> : null}
-                                {this.state.signUpData.type === 'חברה' || this.state.signUpData.type === 'עובד חברה' ?
-                                    <div>
-                                        <div className="row">
-                                            <label className="d-flex align-items-right col-sm-6 col-form-label">מעוניין בהתראות בדוא"ל?</label>
-                                        </div>
-                                        <div className="row">
-                                            <div className="form-check form-check-inline">
-                                                <input className="form-check-input ml-2" type="radio" name="email_notification" id="inlineYes" value="yesNotification" checked={this.state.signUpData.email_notification === 1} onClick={this.isExistsOrVipOrNotification} />
-                                                <label className="form-check-label" htmlFor="inlineYes">כן</label>
-                                            </div>
-                                            <div className="form-check form-check-inline">
-                                                <input className="form-check-input ml-2" type="radio" name="email_notification" id="inlineNo" value="noNotification" onClick={this.isExistsOrVipOrNotification} checked={this.state.signUpData.email_notification === 0} />
-                                                <label className="form-check-label" htmlFor="inlineNo">לא</label>
-                                            </div>
-
-                                            <div>
-
-                                            </div>
-
-                                        </div>
-                                        {!this.state.showSms ? <div className="mb-3"> </div> :
-                                            <div>
-                                                <div className="row mt-3">
-                                                    <label className="d-flex align-items-right col-sm-6 col-form-label">מעוניין התראות סמס ?</label>
-                                                </div>
-                                                <div className="row mb-3">
-                                                    <div className="form-check form-check-inline">
-                                                        <input className="form-check-input ml-2" type="radio" name="sms_notification" id="inlineYes1" value="yesSmsNotification" checked={this.state.signUpData.sms_notification === 1} onClick={this.smsNotification} disabled={this.state.signUpData.subscription === 'regular'} />
-                                                        <label className="form-check-label" htmlFor="inlineYes1">כן</label>
-                                                    </div>
-                                                    <div className="form-check form-check-inline">
-                                                        <input className="form-check-input ml-2" type="radio" name="sms_notification" id="inlineNo2" value="noSmsNotification" onClick={this.smsNotification} checked={this.state.signUpData.sms_notification === 0} disabled={this.state.signUpData.subscription === 'regular'} />
-                                                        <label className="form-check-label" htmlFor="inlineNo2">לא</label>
-                                                    </div>
-
-                                                    <div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        }
-
-
-
-
-                                    </div> : null
-                                }
-                                {
-                                    (this.state.isCompany || this.state.signUpData.type === 'חברה') ?
-                                        <div>
-                                            <div className="row">
-                                                <div className="col-md-10 text-center">
-                                                    <Table
-                                                        header={this.vipHeaders}
-                                                        data={this.vipData}
-                                                        sortDataByKey={(sortKey) => this.SortByKey(sortKey)}>
-                                                    </Table>
-                                                </div>
-                                            </div>
-                                            <div className="form-group row">
-                                                <label className="d-flex align-items-right col-sm-3 col-form-label">סוג מנוי</label>
-                                            </div>
-                                            <div className="form-group row">
-                                                <div className="form-check form-check-inline">
-                                                    <input className="form-check-input ml-2" type="radio" name="subscription" id="regular" value="regular" onClick={this.isExistsOrVipOrNotification} checked={this.state.checkIfReg} />
-                                                    <label className="form-check-label" htmlFor="regular">מנוי רגיל</label>
-                                                </div>
-                                                <div className="form-check form-check-inline">
-                                                    <input className="form-check-input ml-2" type="radio" name="subscription" id="vip" value="vip" onClick={this.isExistsOrVipOrNotification} checked={this.state.signUpData.subscription === 'vip'} />
-                                                    <label className="form-check-label" htmlFor="vip">מנוי VIP</label>
-                                                </div>
-                                            </div>
-                                            <div className="form-group">
-                                                <div className="col-md-4">
-                                                    <h5 className="row d-flex align-items-right mt-4 text-primary"><u>מסמכים</u></h5>
-                                                </div>
-                                                {
-                                                    this.state.dataUpdate ? null :
-                                                        <div>
-                                                            <div className="form-group">
-                                                                <label className="form-check-label d-flex align-items-right" htmlFor="vip">תעודת התאגדות</label>
-
-                                                                <Form className="col-sm-10">
-                                                                    <Form.File id="formcheck-api-regular">
-                                                                        <Form.File.Label></Form.File.Label>
-                                                                        <Form.File.Input
-                                                                            type="file"
-                                                                            name="file1"
-                                                                            onChange={this.Userinput}
-
-                                                                            onBlur={this.state.dataUpdate ? null : () => this.onBlur('file1', this.state.file1)}
-                                                                            className={this.state.validityState.file1 || ''}
-                                                                        />
-                                                                    </Form.File>
-
-                                                                    <div className="row">
-                                                                        <div className="col-12">
-                                                                            <label className="float-right text-danger">{this.state.formMessages.file1}</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </Form>
+                                                                    <label className="float-right text-danger">{this.state.formMessages.validateCodePhone}</label>
+                                                                </div>
                                                             </div>
-                                                            <div className="form-group">
 
-                                                                <label className="form-check-label d-flex align-items-right" htmlFor="vip">פרוטוקול מורשה חתימה</label>
-
-                                                                <Form className="col-sm-10">
-                                                                    <Form.File id="formcheck-api-regular">
-                                                                        <Form.File.Label></Form.File.Label>
-                                                                        <Form.File.Input
-                                                                            type="file"
-                                                                            name="file2"
-                                                                            onChange={this.Userinput}
-
-                                                                            onBlur={this.state.dataUpdate ? null : () => this.onBlur('file2', this.state.file2)}
-                                                                            className={this.state.validityState.file2 || ''}
-                                                                        />
-                                                                    </Form.File>
-                                                                    <div className="row">
-                                                                        <div className="col-12">
-                                                                            <label className="float-right text-danger ml-2">{this.state.formMessages.file2}</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </Form>
+                                                            <div className="form-group row">
+                                                                <label htmlFor="inputPhone2Company" className="d-flex align-items-right col-sm-3 col-form-label">טלפון</label>
+                                                                <div className="col-sm-12">
+                                                                    <input type="text" className={this.state.validityState.company_t_phone || "form-control"} id="inputPhone2Company" name="company_t_phone" value={this.state.signUpData.company_t_phone || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('company_t_phone', this.state.signUpData.company_t_phone)} />
+                                                                    <label className="float-right text-danger">{this.state.formMessages.company_t_phone}</label>
+                                                                </div>
                                                             </div>
-                                                            <label className="form-check-label d-flex align-items-right" htmlFor="vip">ת.ז מנכ''ל</label>
-                                                            <Form className="col-sm-10">
-                                                                <Form.File id="formcheck-api-regular">
-                                                                    <Form.File.Label></Form.File.Label>
+                                                            <div className="form-group row">
+                                                                <label htmlFor="inputEmail2" className="d-flex align-items-right col-sm-3 col-form-label">דוא"ל</label>
+                                                                <div className="col-sm-12">
+                                                                    <input type="text" className={this.state.validityState.companyemail || "form-control"} id="inputEmail2" name="companyemail" value={this.state.signUpData.companyemail || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('companyemail', this.state.signUpData.companyemail)} />
+                                                                    <label className="float-right text-danger">{this.state.formMessages.companyemail}</label>
+                                                                </div>
+                                                            </div>
+                                                            <div className="form-group row">
+                                                                <label htmlFor="inputPhoneFaxCompany" className="d-flex align-items-right col-sm-3 col-form-label"> פקס</label>
+                                                                <div className="col-sm-12">
+                                                                    <input type="text" className={this.state.validityState.companyfax || "form-control"} id="inputPhoneFaxCompany" name="companyfax" value={this.state.signUpData.companyfax || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('companyfax', this.state.signUpData.companyfax)} />
+                                                                    <label className="float-right text-danger">{this.state.formMessages.companyfax}</label>
+                                                                </div>
+                                                            </div>
 
-                                                                    <Form.File.Input
-                                                                        type="file"
-                                                                        name="file3"
-                                                                        onChange={this.Userinput}
+                                                            <div className="form-group row">
+                                                                {this.state.showLabelCompany ? <label htmlFor="inputOseek" className="d-flex align-items-right col-sm-12 col-form-label">ח.פ</label> :
+                                                                    <label htmlFor="inputOseek" className="d-flex align-items-right col-sm-12 col-form-label">עוסק מורשה</label>}
 
-                                                                        onBlur={this.state.dataUpdate ? null : () => this.onBlur('file3', this.state.file3)}
-                                                                        className={this.state.validityState.file3 || ''}
+
+                                                                <div className="col-sm-12">
+                                                                    <input type="text" className={this.state.validityState.code || "form-control"} id="inputOseek" name="code" value={this.state.signUpData.code || ''} onKeyPress={this.state.dataUpdate ? this.handleKeyPress : null} onChange={this.onChangeHandler} onBlur={() => this.onBlur('code', this.state.signUpData.code)} disabled={this.state.dataUpdate === true} />
+                                                                    <label className="float-right text-danger">{this.state.formMessages.code}</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="form-group row">
+                                                                <div className="col-md-4  col-sm-12">
+                                                                    <label htmlFor="comapnyCity" className="d-flex align-items-right mt-3">עיר</label>
+                                                                    <Autocomplete
+
+                                                                        id="comapnyCity"
+                                                                        className={this.state.validityState.companycity || "form-control"}
+                                                                        onBlur={() => this.onBlur('companycity', this.state.signUpData.companycity)}
+                                                                        options={cities}
+                                                                        getOptionLabel={(option) => option.name}
+                                                                        onChange={((evt, city) => {
+                                                                            if (city) {
+                                                                                let { signUpData } = this.state
+                                                                                signUpData.companycity = city.name
+
+                                                                                const { cities } = this.context
+                                                                                const selectedCityCompany = cities.find(city => city && city.name === signUpData.companycity)
+
+                                                                                this.setState({ signUpData, selectedCityCompany })
+                                                                            }
+                                                                        })}
+                                                                        defaultValue={this.state.selectedCityCompany}
+                                                                        value={this.state.selectedCityCompany || ''}
+                                                                        disableClearable={true}
+                                                                        wrapperStyle={{ position: 'relative', display: 'inline-block', color: 'red' }}
+                                                                        style={{ direction: 'rtl' }}
+                                                                        noOptionsText={'ישוב לא קיים'}
+                                                                        renderInput={(params) => <TextField {...params} placeholder="יישוב" size="small" id="comapnyCity" InputProps={{ ...params.InputProps, disableUnderline: true }} />}
                                                                     />
-                                                                </Form.File>
-                                                                <div className="row">
-                                                                    <div className="col-8">
-                                                                        <label className="float-right text-danger">{this.state.formMessages.file3}</label>
+                                                                    <label className="float-right text-danger">{this.state.formMessages.companycity}</label>
+                                                                </div>
+
+                                                                <div className="col-md-4  col-sm-12">
+                                                                    <label htmlFor="inputStreetCompany" className="d-flex align-items-right mt-3">רחוב</label>
+                                                                    <input type="text" className={this.state.validityState.companystreet || "form-control"} id="inputStreetCompany" placeholder="רחוב" name="companystreet" value={this.state.signUpData.companystreet || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('companystreet', this.state.signUpData.companystreet)} />
+                                                                    <label className="float-right text-danger">{this.state.formMessages.companystreet}</label>
+                                                                </div>
+                                                                <div className="col-md-2 col-sm-12">
+                                                                    <label htmlFor="inputZipCompany" className="d-flex align-items-right mt-3" >מיקוד</label>
+                                                                    <input type="text" className={this.state.validityState.company_postal_code || "form-control"} id="inputZipCompany" placeholder="3007500" name="company_postal_code" value={this.state.signUpData.company_postal_code || ''} onChange={this.onChangeHandler} onBlur={() => this.onBlur('company_postal_code', this.state.signUpData.company_postal_code)} />
+                                                                    <label className="float-right text-danger">{this.state.formMessages.company_postal_code}</label>
+                                                                </div>
+                                                            </div>
+                                                        </div> : null}
+                                                    {this.state.signUpData.type === 'חברה' || this.state.signUpData.type === 'עובד חברה' ?
+                                                        <div>
+                                                            <div className="row">
+                                                                <label className="d-flex align-items-right col-sm-6 col-form-label">מעוניין בהתראות בדוא"ל?</label>
+                                                            </div>
+                                                            <div className="row">
+                                                                <div className="form-check form-check-inline">
+                                                                    <input className="form-check-input ml-2" type="radio" name="email_notification" id="inlineYes" value="yesNotification" checked={this.state.signUpData.email_notification === 1} onClick={this.isExistsOrVipOrNotification} />
+                                                                    <label className="form-check-label" htmlFor="inlineYes">כן</label>
+                                                                </div>
+                                                                <div className="form-check form-check-inline">
+                                                                    <input className="form-check-input ml-2" type="radio" name="email_notification" id="inlineNo" value="noNotification" onClick={this.isExistsOrVipOrNotification} checked={this.state.signUpData.email_notification === 0} />
+                                                                    <label className="form-check-label" htmlFor="inlineNo">לא</label>
+                                                                </div>
+
+                                                                <div>
+
+                                                                </div>
+
+                                                            </div>
+                                                            {!this.state.showSms ? <div className="mb-3"> </div> :
+                                                                <div>
+                                                                    <div className="row mt-3">
+                                                                        <label className="d-flex align-items-right col-sm-6 col-form-label">מעוניין התראות סמס ?</label>
+                                                                    </div>
+                                                                    <div className="row mb-3">
+                                                                        <div className="form-check form-check-inline">
+                                                                            <input className="form-check-input ml-2" type="radio" name="sms_notification" id="inlineYes1" value="yesSmsNotification" checked={this.state.signUpData.sms_notification === 1} onClick={this.smsNotification} disabled={this.state.signUpData.subscription === 'regular'} />
+                                                                            <label className="form-check-label" htmlFor="inlineYes1">כן</label>
+                                                                        </div>
+                                                                        <div className="form-check form-check-inline">
+                                                                            <input className="form-check-input ml-2" type="radio" name="sms_notification" id="inlineNo2" value="noSmsNotification" onClick={this.smsNotification} checked={this.state.signUpData.sms_notification === 0} disabled={this.state.signUpData.subscription === 'regular'} />
+                                                                            <label className="form-check-label" htmlFor="inlineNo2">לא</label>
+                                                                        </div>
+
+                                                                        <div>
+
+                                                                        </div>
+
                                                                     </div>
                                                                 </div>
-                                                            </Form>
-                                                        </div>
-                                                }
-                                            </div>
 
-                                            <div className="form-group">
-                                                {this.state.dataUpdate ?
-                                                    <ol>
-                                                        {this.state.fileCompany.map((val, index) => (
-                                                            <li className="text-right">
-                                                                <a href={val.path}>{index === 0 ? 'תעודת התאגדות' :
-                                                                    index === 1 ? 'פרוטוקול מרושה חתימה' : index === 2 ? "ת.ז מנכ''ל": ` קובץ נוסף ${index-2}`}</a>
-                                                            </li>
-                                                        ))}
-                                                    </ol> : null
+                                                            }
 
-                                                }
-                                                <div>
-                                                    <ol start={(this.state.fileCompany.length + 1)}>
-                                                        {this.state.item.map((val, index) => (
-                                                            <li>
-                                                                <div id="output" className="text-right">
-                                                                    {/* {val.split('\\')[2]} */}
-                                                                    {this.state.signUpData.first_name + ' ' + this.state.signUpData.last_name + '-' + this.state.signUpData.code}
-                                                                    <button type="button" title="Delete" className="btn btn-outline" onClick={() => this.deleteList(index)} ><FontAwesomeIcon className="fa-lg " icon={faTimesCircle} color='red'> </FontAwesomeIcon></button>
+
+
+
+                                                        </div> : null
+                                                    }
+                                                    {
+                                                        (this.state.isCompany || this.state.signUpData.type === 'חברה') ?
+                                                            <div>
+                                                                <div className="row">
+                                                                    <div className="col-md-10 text-center">
+                                                                        <Table
+                                                                            header={this.vipHeaders}
+                                                                            data={this.vipData}
+                                                                            sortDataByKey={(sortKey) => this.SortByKey(sortKey)}>
+                                                                        </Table>
+                                                                    </div>
                                                                 </div>
-                                                            </li>
-                                                        ))}
-                                                    </ol>
-                                                </div>
-                                                <div className="text-danger text-right">{this.state.formMessages.item}</div>
+                                                                <div className="form-group row">
+                                                                    <label className="d-flex align-items-right col-sm-3 col-form-label">סוג מנוי</label>
+                                                                </div>
+                                                                <div className="form-group row">
+                                                                    <div className="form-check form-check-inline">
+                                                                        <input className="form-check-input ml-2" type="radio" name="subscription" id="regular" value="regular" onClick={this.isExistsOrVipOrNotification} checked={this.state.checkIfReg} />
+                                                                        <label className="form-check-label" htmlFor="regular">מנוי רגיל</label>
+                                                                    </div>
+                                                                    <div className="form-check form-check-inline">
+                                                                        <input className="form-check-input ml-2" type="radio" name="subscription" id="vip" value="vip" onClick={this.isExistsOrVipOrNotification} checked={this.state.signUpData.subscription === 'vip'} />
+                                                                        <label className="form-check-label" htmlFor="vip">מנוי VIP</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="form-group">
+                                                                    <div className="col-md-4">
+                                                                        <h5 className="row d-flex align-items-right mt-4 text-primary"><u>מסמכים</u></h5>
+                                                                    </div>
+                                                                    {
+                                                                        this.state.dataUpdate ? null :
+                                                                            <div>
+                                                                                <div className="form-group">
+                                                                                    <label className="form-check-label d-flex align-items-right" htmlFor="vip">תעודת התאגדות</label>
 
-                                            </div>
-                                            {this.state.homePageRegister ? null :
-                                                <div>
-                                                    <div className="float-right">
-                                                        <button
-                                                            className="btn btn-success btn-round mb-2"
-                                                            id="add"
-                                                            onClick={(e) => this.AddList(this.state.username, e)}
-                                                        >
-                                                            הוסף קובץ
-                                                    </button>
+                                                                                    <Form className="col-sm-12">
+                                                                                        <Form.File id="formcheck-api-regular">
+                                                                                            <Form.File.Label></Form.File.Label>
+                                                                                            <Form.File.Input
+                                                                                                type="file"
+                                                                                                name="file1"
+                                                                                                onChange={this.Userinput}
+
+                                                                                                onBlur={this.state.dataUpdate ? null : () => this.onBlur('file1', this.state.file1)}
+                                                                                                className={this.state.validityState.file1 || ''}
+                                                                                            />
+                                                                                        </Form.File>
+
+                                                                                        <div className="row">
+                                                                                            <div className="col-12">
+                                                                                                <label className="float-right text-danger">{this.state.formMessages.file1}</label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </Form>
+                                                                                </div>
+                                                                                <div className="form-group">
+
+                                                                                    <label className="form-check-label d-flex align-items-right" htmlFor="vip">פרוטוקול מורשה חתימה</label>
+
+                                                                                    <Form className="col-sm-12">
+                                                                                        <Form.File id="formcheck-api-regular">
+                                                                                            <Form.File.Label></Form.File.Label>
+                                                                                            <Form.File.Input
+                                                                                                type="file"
+                                                                                                name="file2"
+                                                                                                onChange={this.Userinput}
+
+                                                                                                onBlur={this.state.dataUpdate ? null : () => this.onBlur('file2', this.state.file2)}
+                                                                                                className={this.state.validityState.file2 || ''}
+                                                                                            />
+                                                                                        </Form.File>
+                                                                                        <div className="row">
+                                                                                            <div className="col-12">
+                                                                                                <label className="float-right text-danger ml-2">{this.state.formMessages.file2}</label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </Form>
+                                                                                </div>
+                                                                                <label className="form-check-label d-flex align-items-right" htmlFor="vip">ת.ז מנכ''ל</label>
+                                                                                <Form className="col-sm-12">
+                                                                                    <Form.File id="formcheck-api-regular">
+                                                                                        <Form.File.Label></Form.File.Label>
+
+                                                                                        <Form.File.Input
+                                                                                            type="file"
+                                                                                            name="file3"
+                                                                                            onChange={this.Userinput}
+
+                                                                                            onBlur={this.state.dataUpdate ? null : () => this.onBlur('file3', this.state.file3)}
+                                                                                            className={this.state.validityState.file3 || ''}
+                                                                                        />
+                                                                                    </Form.File>
+                                                                                    <div className="row">
+                                                                                        <div className="col-8">
+                                                                                            <label className="float-right text-danger">{this.state.formMessages.file3}</label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </Form>
+                                                                            </div>
+                                                                    }
+                                                                </div>
+
+                                                                <div className="form-group">
+                                                                    {this.state.dataUpdate ?
+                                                                        <ol>
+                                                                            {this.state.fileCompany.map((val, index) => (
+                                                                                <li className="text-right">
+                                                                                    <a href={val.path}>{index === 0 ? 'תעודת התאגדות' :
+                                                                                        index === 1 ? 'פרוטוקול מרושה חתימה' : index === 2 ? "ת.ז מנכ''ל" : ` קובץ נוסף ${index - 2}`}</a>
+                                                                                </li>
+                                                                            ))}
+                                                                        </ol> : null
+
+                                                                    }
+                                                                    <div>
+                                                                        <ol start={(this.state.fileCompany.length + 1)}>
+                                                                            {this.state.item.map((val, index) => (
+                                                                                <li>
+                                                                                    <div id="output" className="text-right">
+                                                                                        {/* {val.split('\\')[2]} */}
+                                                                                        {this.state.signUpData.first_name + ' ' + this.state.signUpData.last_name + '-' + this.state.signUpData.code}
+                                                                                        <button type="button" title="Delete" className="btn btn-outline" onClick={() => this.deleteList(index)} ><FontAwesomeIcon className="fa-lg " icon={faTimesCircle} color='red'> </FontAwesomeIcon></button>
+                                                                                    </div>
+                                                                                </li>
+                                                                            ))}
+                                                                        </ol>
+                                                                    </div>
+                                                                    <div className="text-danger text-right">{this.state.formMessages.item}</div>
+
+                                                                </div>
+                                                                {this.state.homePageRegister ? null :
+                                                                    <div>
+                                                                        <div className="float-right">
+                                                                            <button
+                                                                                className="btn btn-success btn-round mb-2"
+                                                                                id="add"
+                                                                                onClick={(e) => this.AddList(this.state.username, e)}
+                                                                            >
+                                                                                הוסף קובץ
+                                                                            </button>
+                                                                        </div>
+
+
+                                                                        <Form>
+                                                                            <Form.File id="fileInput">
+                                                                                <Form.File.Label></Form.File.Label>
+                                                                                <Form.File.Input
+                                                                                    type="file"
+                                                                                    name="file1"
+                                                                                    onChange={this.UserinputAdmin}
+                                                                                    value={this.state.username}
+                                                                                    className="mb-3"
+                                                                                />
+                                                                            </Form.File>
+                                                                        </Form>
+                                                                    </div>
+                                                                }
+
+
+
+
+                                                            </div> : null
+                                                    }
+
+                                                    <div className="form-group row">
+                                                        <div className="col-md-2 col-sm-12 mb-3">
+                                                            <button type="button" className="btn btn-danger btn-block" onClick={this.backButton} > חזרה</button>
+                                                        </div>
+
+                                                        <div className="col-md-5"></div>
+                                                        <div className="col-md-3 col-sm-12">
+                                                            <div className="form-group">
+                                                                {this.state.dataUpdate || this.state.dataUpdateTemp ?
+                                                                    this.state.changeSubscription ? <a type="button" className="btn btn-outline-primary  btn-block" onClick={() => this.onUpdateDetails('payment')} href={this.state.signUpData.subscription === 'vip' ? "https://app.icount.co.il/m/cc94e/c45461p4u5f1c68e67e" : "https://app.icount.co.il/m/70e63/c45461p3u5f1c67f34e"}>לתשלום</a>
+                                                                        : <button type="button" className="btn btn-outline-primary btn-block" onClick={() => this.onUpdateDetails('updateInfo')}>עדכן פרטים</button>
+                                                                    : null
+                                                                }
+
+                                                                {
+                                                                    ((!this.state.dataUpdate && this.state.isCompany)) ?
+                                                                        this.state.signUpData.subscription === 'regular' ?
+                                                                            <button className="btn btn-primary btn-block" onClick={this.onSaveData}> סיום הרשמה</button>
+                                                                            : <button className="btn btn-primary btn-block" onClick={this.onSaveData} >סיום הרשמה</button>
+                                                                        : null
+                                                                }
+
+                                                                {!this.state.dataUpdate && !this.state.isCompany && !this.state.changeSubscription ?
+                                                                    <div>
+
+                                                                        <button type="button" className="btn btn-primary btn-block" onClick={this.onSaveData}> סיום הרשמה</button>
+                                                                    </div> : null
+                                                                }
+
+                                                                {this.state.isCreate ? <PopUp show={this.state.addModalShow}
+                                                                    onHide={() => false}
+                                                                    isCreate={this.state.isCreate}
+                                                                    typeSubscription={this.state.signUpData.subscription}
+                                                                    msg={this.state.message}
+
+                                                                    updatePopup={this.state.updatePopup} />
+                                                                    :
+                                                                    <AddDepModal show={this.state.addModalShow}
+                                                                        onHide={() => false}
+                                                                        msg={this.state.message}
+                                                                        updatePopup={this.state.updatePopup}
+                                                                        backSupportFromInfo={this.state.backSupportFromInfo}
+                                                                        backCustomerAdmin={this.state.backCustomerAdmin}
+                                                                        editInfoShow={this.state.editInfoShow} />
+                                                                }
+
+
+                                                            </div>
+                                                        </div>
+
+
+
                                                     </div>
+                                                    {this.state.isUsersFromAdmin && <Redirect to="/admin/users" />}
+                                                    {this.state.isAdmin && <Redirect to="/admin" />}
+                                                    {this.state.isSupport && <Redirect to="/support" />}
+                                                    {this.state.isCustomer && <Redirect to="/customer" />}
+                                                    {this.state.isCompanyEditInfo && <Redirect to="/company" />}
+                                                    {this.state.isSignUp && <Redirect to="/login" />}
+                                                    {this.state.backAfterSignUp && <Redirect to="/login" />}
+                                                    {this.state.adminRedirect && <Redirect to="/admin/users" />}
+                                                    {this.state.saleRedirect && <Redirect to="/salesman" />}
+                                                    {this.state.showEmailValidate &&
+                                                        <ValidateEmail
+                                                            show={this.state.showEmailValidate}
+                                                            addModalClosed={this.addModalClosed}
+                                                            signUpData={this.state.signUpData}
+                                                            disablePopAfter={this.disablePopAfter}
+                                                            redirectPage={this.redirectPage}
+                                                        />
+                                                    }
+                                                    {this.state.changeEmailValidate &&
+                                                        <ValidateEmail
+                                                            show={this.state.addModalShowEmailValidate}
+                                                            addModalClosed={this.addModalClosed}
+                                                            signUpData={this.state.signUpData}
+                                                            disablePopAfter={this.disablePopAfter}
+                                                            redirectPage={this.redirectPage}
+                                                            changeEmailValidate={this.state.changeEmailValidate}
+                                                        />
 
-
-                                                    <Form>
-                                                        <Form.File id="fileInput">
-                                                            <Form.File.Label></Form.File.Label>
-                                                            <Form.File.Input
-                                                                type="file"
-                                                                name="file1"
-                                                                onChange={this.UserinputAdmin}
-                                                                value={this.state.username}
-                                                                className="mb-3"
-                                                            />
-                                                        </Form.File>
-                                                    </Form>
+                                                    }
                                                 </div>
-                                            }
-
-
-
-
-                                        </div> : null
-                                }
-
-                                <div className="form-group row">
-                                    <div className="col-md-2 col-sm-10 mb-3">
-                                        <button type="button" className="btn btn-danger btn-block" onClick={this.backButton} > חזרה</button>
-                                    </div>
-
-                                    <div className="col-md-5"></div>
-                                    <div className="col-md-3 col-sm-10">
-                                        <div className="form-group">
-                                            {this.state.dataUpdate || this.state.dataUpdateTemp ?
-                                                this.state.changeSubscription ? <a type="button" className="btn btn-outline-primary  btn-block" onClick={() => this.onUpdateDetails('payment')} href={this.state.signUpData.subscription === 'vip' ? "https://app.icount.co.il/m/cc94e/c45461p4u5f1c68e67e" : "https://app.icount.co.il/m/70e63/c45461p3u5f1c67f34e"}>לתשלום</a>
-                                                    : <button type="button" className="btn btn-outline-primary btn-block" onClick={() => this.onUpdateDetails('updateInfo')}>עדכן פרטים</button>
-                                                : null
-                                            }
-
-                                            {
-                                                ((!this.state.dataUpdate && this.state.isCompany)) ?
-                                                    this.state.signUpData.subscription === 'regular' ?
-                                                        <button className="btn btn-primary btn-block" onClick={this.onSaveData}> סיום הרשמה</button>
-                                                        : <button className="btn btn-primary btn-block" onClick={this.onSaveData} >סיום הרשמה</button>
-                                                    : null
-                                            }
-
-                                            {!this.state.dataUpdate && !this.state.isCompany && !this.state.changeSubscription ?
-                                                <div>
-
-                                                    <button type="button" className="btn btn-primary btn-block" onClick={this.onSaveData}> סיום הרשמה</button>
-                                                </div> : null
-                                            }
-
-                                            {this.state.isCreate ? <PopUp show={this.state.addModalShow}
-                                                onHide={() => false}
-                                                isCreate={this.state.isCreate}
-                                                typeSubscription={this.state.signUpData.subscription}
-                                                msg={this.state.message}
-
-                                                updatePopup={this.state.updatePopup} />
-                                                :
-                                                <AddDepModal show={this.state.addModalShow}
-                                                    onHide={() => false}
-                                                    msg={this.state.message}
-                                                    updatePopup={this.state.updatePopup}
-                                                    backSupportFromInfo={this.state.backSupportFromInfo}
-                                                    backCustomerAdmin={this.state.backCustomerAdmin}
-                                                    editInfoShow={this.state.editInfoShow} />
-                                            }
-
-
+                                            </div>
                                         </div>
-                                    </div>
-
-
-
+                                    </div >
                                 </div>
-                                {this.state.isUsersFromAdmin && <Redirect to="/admin/users" />}
-                                {this.state.isAdmin && <Redirect to="/admin" />}
-                                {this.state.isSupport && <Redirect to="/support" />}
-                                {this.state.isCustomer && <Redirect to="/customer" />}
-                                {this.state.isCompanyEditInfo && <Redirect to="/company" />}
-                                {this.state.isSignUp && <Redirect to="/login" />}
-                                {this.state.backAfterSignUp && <Redirect to="/login" />}
-                                {this.state.adminRedirect && <Redirect to="/admin/users" />}
-                                {this.state.saleRedirect && <Redirect to="/salesman" />}
-                                {this.state.showEmailValidate &&
-                                    <ValidateEmail
-                                        show={this.state.showEmailValidate}
-                                        addModalClosed={this.addModalClosed}
-                                        signUpData={this.state.signUpData}
-                                        disablePopAfter={this.disablePopAfter}
-                                        redirectPage={this.redirectPage}
-                                    />
-                                }
-                                {this.state.changeEmailValidate &&
-                                    <ValidateEmail
-                                        show={this.state.addModalShowEmailValidate}
-                                        addModalClosed={this.addModalClosed}
-                                        signUpData={this.state.signUpData}
-                                        disablePopAfter={this.disablePopAfter}
-                                        redirectPage={this.redirectPage}
-                                        changeEmailValidate={this.state.changeEmailValidate}
-                                    />
-
-                                }
                             </div>
                         </div>
                     </div>
-                </div >
+                </div>
             </div>
         )
     }

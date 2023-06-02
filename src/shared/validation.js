@@ -482,9 +482,9 @@ const validateLoginCustomerAndAdmin = (data = {}, changedField, password) => val
     });
 
 
-    // test('password', 'עליך להזין לפחות 8 תווים בשדה סיסמה.', () => {
-    //     enforce(data.password).longerThan(6);
-    // });
+    test('password', 'עליך להזין לפחות 6 תווים בשדה סיסמה.', () => {
+        enforce(data.password).longerThan(6);
+    });
 
 })
 // Copied from https://emailregex.com/

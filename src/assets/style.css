@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.Login {
+  /* The image used */
+  background-image: url(../assets/background01.jpg);
+  /* Full height */
+  height: 100%; 
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.23) !important;
 }
@@ -8,7 +24,7 @@
   outline: 0 !important;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
 }
-.btn-round-lg {
+/* .btn-round-lg {
   border-radius: 22.5px;
 }
 .btn-round {
@@ -16,12 +32,12 @@
 }
 .btn-round-sm {
   border-radius: 15px;
-}
-.btn-round-xs {
+} */
+/* .btn-round-xs {
   border-radius: 11px;
   padding-left: 10px;
   padding-right: 10px;
-}
+} */
 
 .MuiAutocomplete-noOptions {
   padding: 14px 16px !important;
@@ -51,18 +67,18 @@
 #container {
   padding: 0;
 }
-#emailInput {
+/* #emailInput {
   border-color: black;
   border-width: 2px;
 }
 #passwordInput {
   border-color: #111111;
   border-width: 2px;
-}
-#loginButton {
+} */
+/* #loginButton {
   background-color: #8eacff;
   font-weight: bold;
-}
+} */
 #Alleventsbtn {
   margin-top: 40%;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -83,12 +99,12 @@
 }
 
 #idLoginStyle {
-  width: 100vw;
-  min-height: 100vh;
+  /* width: 100vw;
+  min-height: 100vh; */
   /* background: linear-gradient(#3e455c, #292635); */
   /* background: linear-gradient(#464c5f, #39315d); */
   /* background: linear-gradient(#7f8b97, #39315d); */
-  background: linear-gradient(#7f8b97, #454579); 
+  /*background: linear-gradient(#7f8b97, #454579); */
 }
 
 #resetVal {
@@ -188,8 +204,28 @@ h6 {
   height: 180px;
   margin: auto;
 }
-#details {
+
+#card-body {
   /* background: linear-gradient(#b0beca, #a29bbd); */
-  background-color: #d0ced6;
-  line-height: 1.1 !important;
+  /* background-color: #d0ced6; */
+  /* line-height: 1.1 !important; */
+  /* background-image: url(../assets/signup.jpg); */
+  /* Full height */
+  /* height: 100%;  */
+  /* Center and scale the image nicely */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  /* width: 1000px; */
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  /* text-align: center; */
+  /* box-shadow: 5px 5px blue, 10px 10px red, 15px 15px green; */
+  /* box-shadow: 10px 10px 5px 12px lightblue; */
+  /* height: 100vh; */
+  /* border: 0.40rem solid #f8f9fa;
+  top: 10%; */
+  /* border-radius: 15px; */
+  /* height: 100vh; Use vh as a fallback for browsers that do not support Custom Properties */
+  /* height: calc(var(--vh, 1vh) * 100); */
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
 }

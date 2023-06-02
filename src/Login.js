@@ -4,6 +4,7 @@ import fetcher from './api/fetcher';
 import { setUser, getUser } from './api/auth';
 import { validateLoginCustomerAndAdmin } from './shared/validation';
 import './assets/style.css'
+import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 export default class Login extends React.Component {
 
   constructor(props) {
@@ -25,7 +26,7 @@ export default class Login extends React.Component {
       formMessages: {},
       validityState: {},
       roleLoginCustomers: {},
-     
+
     }
   }
 
@@ -165,50 +166,76 @@ export default class Login extends React.Component {
     }
 
     return (
-      <body id="idLoginStyle">
+      <div className="Login">
+        <Container>
+          <Row className="vh-100 d-flex justify-content-center align-items-center">
+            <Col md={8} lg={6} xs={12}>
+              <Card className="shadow">
+                <Card.Body>
+                  <div className="mb-3 mt-md-4">
+                    <div className="form-group d-flex justify-content-center mt-4">
+                      <img src={'./logoFinal/blackImageLogo.png'} alt="logo" width="300px"></img>
+                    </div>
+                    <div className="mb-3">
+                      <Form>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                          <Form.Control
+                            id="emailInput" type="email" className={this.state.validityState.email || "form-control"} placeholder="דואר אלקטרוני" name="email" value={this.state.dataLogIn.email} onChange={this.onChangeHandler} onBlur={() => this.onBlur('email', this.state.dataLogIn.email)}
+                          />
+                          <label className="float-right text-danger">{this.state.formMessages.email}</label>
+                        </Form.Group>
+                        <Form.Group
+                          className="mb-3"
+                          controlId="formBasicPassword"
+                        >
+                          <Form.Control
 
-        <div>
+                            id="passwordInput" type="password" className={this.state.validityState.password || "form-control"} name="password" placeholder="סיסמה" onChange={this.onChangeHandler} onBlur={() => this.onBlur('password', this.state.dataLogIn.password)}
+                          />
+                           <Form.Group>
+                          <div>
+                          <label className="float-right text-danger">{this.state.formMessages.password}</label>
+                          </div>
 
-          <div className="container">
+                           </Form.Group>
+                      
+                        </Form.Group>
+                       <div>
+                        
+                     
 
-            <div className="row">
-              <div className="col-md-3">
+                        </div>
+                        <div className="d-grid">
+                          <Button
+                            type="button" id="loginButton" className="btn-dark btn-block" onClick={this.onClickLogin}
+                          >
+                            כניסה
+                          </Button>
+                          <Button
+                            type="button" id="loginButton" className="btn-dark btn-block" onClick={this.onClickSignUp}
+                          >
+                            הרשמה
+                          </Button>
+                          <Form.Group className='d-flex justify-content-righ mt-3'>
+                          {/* <div className="text-right d-flex justify-content-right"> */}
+                            <a className="text-primary" href="/reset">
+                              שכחת סיסמה?
+                            </a>
+                          {/* </div> */}
+                        </Form.Group>
+                        </div>
+                      </Form>
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+        {this.state.isReset && <Redirect to="/reset" />}
+        {this.state.isSignUp && <Redirect to="/signup" />}
+      </div>
 
-              </div>
-              <div className="col-md-6 " id="loginPageStyle">
-                <div className="form-group d-flex justify-content-center mt-4">
-                  <img src={'./logoFinal/blackImageLogo.png'} alt="Logo" width={'300px'}></img>
-                </div>
-                <div className="form-group mt-5">
-                  <input id="emailInput" type="email" style={{ border: '3px solid CornflowerBlue' }} className={this.state.validityState.email || "form-control btn-round"} placeholder="דואר אלקטרוני" name="email" value={this.state.dataLogIn.email} onChange={this.onChangeHandler} onBlur={() => this.onBlur('email', this.state.dataLogIn.email)} />
-                  <label className="float-right text-danger">{this.state.formMessages.email}</label>
-                </div>
-                <div className="form-group">
-                  <input id="passwordInput" type="password" style={{ border: '3px solid CornflowerBlue' }} className={this.state.validityState.password || "form-control btn-round"} placeholder="סיסמה" name="password" value={this.state.dataLogIn.password} onKeyDown={(e) => { this.handleKeyDown(e, 'password', this.state.dataLogIn.password) }} onChange={this.onChangeHandler} />
-
-                  <div className="text-danger text-right">{this.state.formMessages.password}</div>
-
-                  {this.state.msg ?
-                    <div className="text-danger text-right">{this.state.msg}</div> : null
-                  }
-
-                </div>
-                <div className="form-group  text-right d-flex justify-content-right">
-                  <a href=" " onClick={this.onClickReset}>שחזור סיסמה</a>
-                </div>
-                <button type="button" id="loginButton" className="btn btn-block" onClick={this.onClickLogin}>כניסה</button>
-                <button type="button" id="loginButton" className="btn btn-block" onClick={this.onClickSignUp}>הרשמה</button>
-              </div>
-              {this.state.isReset && <Redirect to="/reset" />}
-              {this.state.isSignUp && <Redirect to="/signup" />}
-
-            </div>
-          </div>
-
-
-        </div>
-
-      </body>
     )
   }
 }
