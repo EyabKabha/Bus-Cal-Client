@@ -1,6 +1,6 @@
 import axios from 'axios';
 const fetcher = axios.create({
-    baseURL: 'http://localhost:3001',
+    baseURL: 'http://buscal.co.il:3001',
     withCredentials: true
 });
 
